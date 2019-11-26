@@ -8,6 +8,8 @@ var xPos = 0;       // LEFT/RIGHT
 var yPos = 0;       // UP/DOWN
 var direction = 0; 
 var left = true;
+var mapX = [];   // PLAYER POSITIONS X
+var mapY = [];   // PLAYER POSITIONS Y
 
 var startPos = 1;   //START POS
 var endPos = 30;    //END POS
@@ -41,6 +43,8 @@ function leftRight(x){
 function drawBoard(){
         for(var x = 0; x < board[0].length; x++){
             if(left === true){
+                mapX.push(xPos+(wh/2)); // get X Pos center
+                mapY.push(yPos+(wh/2)); // Get Y pos centter
                 drawTile(x);
                 xPos += wh;
                 if(xPos === myCanvas.width){
@@ -49,6 +53,8 @@ function drawBoard(){
                 }// END IF
             } // END IF
             else if(left === false){
+                mapX.push(xPos+(wh/2));
+                mapY.push(yPos+(wh/2));
                 xPos -= wh;
                 drawTile(x);
                 if(xPos === 0){

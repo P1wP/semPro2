@@ -25,10 +25,21 @@ for(var i = 0; i < houses.length; i++){
             if(houses[i].style.filter === "none")
                clicked = i;
                 
-        }//END FOR   
+        }//END FOR  
+        // SET CONTENT CHAR AND HOUSES
+        if(this === houses[0]){
+            alert("stark");
+        }
+        else if(this === houses[1]){
+            alert("Tygerian");
+        }
+        else if(this === houses[2]){
+            alert("Lannister");
+        }
+        
     })//END CLICK
     
 }//END FOR
 
 
-// SET CONTENT CHAR AND HOUSES
+
