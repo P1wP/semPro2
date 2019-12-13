@@ -6,7 +6,7 @@
 
 var urlHouse = "https://www.anapioficeandfire.com/api/houses/";
 var houses = ["362", "378", "229"]; // STARK, TYGERIAN, LANNISTER
-var myObject = [];
+var myHouses = [];
 
 // GET HOUSES
 if(localStorage.getItem("houses") === null){ // CHECK IF HOUSES IN STORAGE
@@ -15,16 +15,15 @@ if(localStorage.getItem("houses") === null){ // CHECK IF HOUSES IN STORAGE
         fetch(urlHouse + houses[i]).then(function (result) {
             return result.json();
         }).then(function (json) {
-            myObject.push(json); 
-            localStorage.setItem("houses", JSON.stringify(myObject)); // SAVE TO STORAGE
+            myHouses.push(json); 
+            localStorage.setItem("houses", JSON.stringify(myHouses)); // SAVE TO STORAGE
         });
     }
 }
 else{
     console.log("Fetch houses complete");
-    myObject = JSON.parse(localStorage.getItem("houses")); // RETREVE FROM STORAGE
+    myHouses = JSON.parse(localStorage.getItem("houses")); // RETREVE FROM STORAGE
 }
-
 
 //FIND MEMBERS
 /* 
@@ -33,11 +32,43 @@ https://github.com/joakimskoog/AnApiOfIceAndFire/blob/master/data/characters.jso
 */
 var urlChar = "https://anapioficeandfire.com/api/characters/";
 
-var starkChar = ["957", "583", "148", "956" ]; // SANSA, JON, ARYA, HOUND
-var tygChar=["1445", "1560", "1303", "1346"]; // UNSULLIED, BG, DINERIES, DROGO
-var lannChar= ["565", "529","238", "1052"];   // JOFFERY, JAMIE, SERCY, DWARF
+var starkChar = ["148", "956", "957", "583" ]; // ARYA, HOUND, SANSA, JON, 
+var tygChar=["1303", "1346", "1445", "1560"]; // DINERIES, DROGO, UNSULLIED, BG
+var lannChar= ["1052", "529", "565", "238"];   // DWARF, JOFFERY, JAMIE, SERCY
 
-//STARK.
-//TYGERIAN
-//LANNISTER
+
+
+
+function getMemeber(myLS, array, newArray, name){ // LockalStorage, array of numbers, empty array
+    if(localStorage.getItem(myLS) === null){
+        console.log("Getting names for " + name);
+        
+        for(var i = 0; i < array.length; i++){
+            fetch(urlChar + array[i]).then(function (result) {
+                return result.json();
+            }).then(function (json) {
+                newArray.push(json); 
+                localStorage.setItem(name, JSON.stringify(newArray)); // SAVE TO STORAGE
+            });
+            }   
+    }
+    else{
+    console.log("Fetch names for " + name + " is complete");
+    }
+    
+}
+
+var tyg = "tygerian";
+var str = "stark";
+var lan = "lannister";
+
+//CHARACTERS
+var starkMembers = [];
+var tygMembers = [];
+var lanMembers = [];
+
+// FETCH AND SAVE MEMBERS TO LOCAL STORAGE
+getMemeber(str, starkChar, starkMembers, str);
+getMemeber(tyg, tygChar, tygMembers, tyg);
+getMemeber(lan, lannChar, lanMembers, lan);
 

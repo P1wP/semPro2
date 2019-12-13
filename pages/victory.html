@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> Gameboard </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" v="1.0" href="../styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class=" navbar navbar-default [ navigation ]">
+            <div class="navbar-header [ header ]">
+                <button class="navbar-toggle collapsed [ header__btn ]" type="button" data-toggle="collapse" data-target="#collapseMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger [ header_btn--hamburger ]"></span>
+                </button>
+                <a class="navbar-brand hidden-lg hidden-md hidden-sm [ header__link ]" href="#"><img class="header__link--img" src="#"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="collapseMenu">
+                <ul class="nav navbar-nav [ myNav ]">
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">SinglePlayer </a> <!-- STANDARD LAYOUT -->
+                    </li>
+                     <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">MultiPlayer </a> <!-- ADD TEXT FIEALD FOR LOCAL MULTIPLAYER NAME -->
+                    </li>
+                     <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">Online</a>   <!-- IF TIME IMPLEMENT MULTIPLE CLIENT SUPPORT -->
+                    </li>
+
+                    <li class="nav-item [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" id="rules" href="#">Rules</a> <!-- OPEN MODAL -->
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right [ myNav ]">
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li><!-- OPEN MODAL -->
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li><!-- OPEN MODAL -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="[ main noBg ]">
+        <div class="pyro">
+  <div class="before"></div>
+  <div class="after"></div>
+</div>
+        <div class="container-fluid [ result ]">
+            <div class="row [ result__winner ]"> 
+                <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center [ result__winner--charImg ]">
+                    <h1>WINNER NAME</h1>
+                    <img src ="../img/Faces/placeholder.png" alt="char img of winner">
+        
+                </div>
+                <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center [ result__winner--charName ]">
+                    <h1>WINNER NAME</h1>
+                </div>
+                <a href="https://www.freepik.com/free-photos-vectors/logo">Logo vector created by rawpixel.com - www.freepik.com</a>
+            </div>
+        </div>
+        
+        <!-- fireWokrs 
+        <canvas id="fireWorks" height="500" width="auto"></canvas> -->
+        <div class="container-fluid">
+            <div class="[ selected ] row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h3 class="players">Player One</h3>
+                    <p id="playerCharOne" class="winLose">You are the WINNER!</p>
+                </div>
+            
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h3 class="players">Player Two</h3>
+                    <p id="playerCharTwo" class="winLose"> LOSER!</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <button id="newGame">| Play Again |</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+    <!-- JS -->
+    <script src="../script/pages.js"></script>
+    <script src="../script/player.js"></script>
+    <script src="../script/fireWorks.js"></script>
+   
+</body>
+</html>

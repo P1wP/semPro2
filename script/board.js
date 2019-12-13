@@ -1,91 +1,83 @@
 var myCanvas = document.getElementById("canvas");
 ctx = myCanvas.getContext("2d");
-//TILE INFO
-// devide by five to get 5x5 board
 
-var wh = myCanvas.width/5; 
+//TILE INFO
+var wh = myCanvas.width/5; // devide by five to get 5x5 board
 var xPos = 0;       // LEFT/RIGHT
 var yPos = 0;       // UP/DOWN
-var direction = 0; 
-var left = true;
-var mapX = [];   // PLAYER POSITIONS X
-var mapY = [];   // PLAYER POSITIONS Y
+var left = true;    // LEFT / RIGHT ON BOARD
+var mapX = [];      // PLAYER POSITIONS X
+var mapY = [];      // PLAYER POSITIONS Y
+var mapTraps = [];
 
 var startPos = 1;   //START POS
 var endPos = 30;    //END POS
 
 // DRAW BOARD
-
 var board = [
-    // s = start
-    // e = end
     // 0 = tile
     // x = trap
-    [0, "x", 0, 0, 0,// 1-5
+    [0, 0, 0, 0, "x",// 1-5
     0, "x", 0, 0, 0,// 10-6
     "x", 0, 0, 0, 0,// 11-15
     0, 0, 0, "x", 0,// 16-20
     0, 0, 0, "x", 0,// 25-21
-    0, 0, 0, 0, 0] // 26-30
-   
-
+    0, 0, 0, "x", 0] // 26-30
 ];
-function leftRight(x){
-    if(x === true){
-        direction += wh;
-    }
-    else if(x === false){
-        direction -= wh;
-    }
-    console.log(direction);
-}
+
+
 
 function drawBoard(){
         for(var x = 0; x < board[0].length; x++){
+            getTraps(x);
             if(left === true){
-                mapX.push(xPos+(wh/2)); // get X Pos center
-                mapY.push(yPos+(wh/2)); // Get Y pos centter
-                drawTile(x);
-                xPos += wh;
-                if(xPos === myCanvas.width){
+                drawTile(xPos, yPos); // Draw tile
+                mapX.push(xPos); // GET TILE COORDINATES
+                mapY.push(yPos);    // GET TILE COORDINATES
+                xPos += wh; // Position Next Tile
+                if(xPos === myCanvas.width){ // NEXT LINE OF TILES
                     left = false;
                     yPos +=wh;
                 }// END IF
             } // END IF
             else if(left === false){
-                mapX.push(xPos+(wh/2));
-                mapY.push(yPos+(wh/2));
+                mapX.push(xPos-100);
+                mapY.push(yPos);
                 xPos -= wh;
-                drawTile(x);
+                drawTile(xPos, yPos);
                 if(xPos === 0){
                     left = true;
                     yPos +=wh;
                 }//END IF
             }// END ELSIF
         }// END FOR LOOP
+       
 }
 
-function drawTile(x){
-    if(startPos%2){
-        ctx.fillStyle = "gray";
-    }
-    else{
-        ctx.fillStyle = "white";
-    }
+function drawTile(x, y){
+
     if(board[0][x] === "x"){
         ctx.fillStyle = "red";
     }
+    // CHECKERBOARD FILL STYLE
     ctx.fillRect(xPos, yPos, wh, wh);
     if(startPos%2){
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "black";
     }
-    
     else{
         ctx.fillStyle = "black";
     }
-    ctx.fillText(x + " => " + startPos, xPos+50, yPos+50, wh);
+    // FILL NUMBER OF TILE
+    ctx.fillText("X"+x +"Y" +y + " => " + startPos, xPos, yPos+(wh/2), wh);
     startPos++;
+
     
+}
+
+function getTraps(x){
+    if(board[0][x] === "x"){
+        mapTraps.push(x);
+    }
 }
 
 drawBoard();

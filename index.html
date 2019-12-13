@@ -7,179 +7,74 @@
     
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" v="1.0" href="styles.css">
-<link rel="stylesheet" href="font/Rpg-Awesome-master/Rpg-Awesome-master/css/rpg-awesome.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/57b8f19cf9.js" crossorigin="anonymous"></script>
 <style>
-    .main{
-        min-height: 100vh;
-        background-color: #fff;
-        
-    }
-    .banner{
-        height: 450px;
-        
-    }
-    
-    .banner__house{
-        margin-top: 50px;
-        height: 350px;
-        filter: grayscale(100%);
-        cursor: pointer;
-    }
-    
-    .banner__house img{
-        margin-top: 60px;
-        width: 100%;
-    }
-    
-    .banner__stark{
-        background-image: url(img/houses/stark.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
- 
-    .banner__tygarian{
-        background-image: url(img/houses/tygerian.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-  
 
-    .banner__lannister{
-        background-image: url(img/houses/lannister.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-   
-    
- /* Flip Cards CSS */
-.cardContainer {
-  display: grid;
-  perspective: 1000px;
-}
 
-.cardContainer__turn {
-  display: grid;
-  
-  grid-template-areas: "frontAndBack";
-  transform-style: preserve-3d;
-  transition: all 2.0s ease;
-}
- 
-.cardContainer__turn--front {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-.cardContainer__turn--front {
-  grid-area: frontAndBack;
-    background: red;
-
-}
-
-.cardContainer__turn--back {
-  grid-area: frontAndBack;
-  transform: rotateY(-180deg);
-    background: blue;
-}
-    
-.cardContainer__turn--front, .cardContainer__turn--back{
-    height: 250px;
-}
-
-.cardContainer:hover .cardContainer__turn {
-  transform: rotateY(180deg);
-}
-    
-    .ra-knight-helmet{
-        color: white;
-        font-size: 150px;
-    }
-
-    
-    footer {
-        width: 100%;
-        background-color: #1E2357;
-        color: #E4CEE4;
-        font-size: 1.5em;
-    }
-    
 </style>
 	<title> TitleGame </title>
 </head>
 
 <body>
     <header>
-        <nav class=" navbar navbar-default [ navigation ]">
+                <nav class=" navbar navbar-default [ navigation ]">
             <div class="navbar-header [ header ]">
                 <button class="navbar-toggle collapsed [ header__btn ]" type="button" data-toggle="collapse" data-target="#collapseMenu">
                     <span class="glyphicon glyphicon-menu-hamburger [ header_btn--hamburger ]"></span>
                 </button>
-                <a class="navbar-brand hidden-lg hidden-md hidden-sm [ header__link ]" href="#"><img class="header__link--img" src="img/Asset%208.svg"></a>
+                <a class="navbar-brand hidden-lg hidden-md hidden-sm [ header__link ]" href="#"><img class="header__link--img" src="#"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="collapseMenu">
-                <ul class="nav navbar-nav myBlock">
-                    <li class="nav-item myBlock__elm">
-                        <a class="nav-link myBlock__elm--mod" href="#">SinglePlayer </a> <!-- STANDARD LAYOUT -->
+                <ul class="nav navbar-nav [ myNav ]">
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">SinglePlayer </a> <!-- STANDARD LAYOUT -->
                     </li>
-                     <li class="nav-item myBlock__elm">
-                        <a class="nav-link myBlock__elm--mod" href="#">MultiPlayer </a> <!-- ADD TEXT FIEALD FOR LOCAL MULTIPLAYER NAME -->
+                     <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">MultiPlayer </a> <!-- ADD TEXT FIEALD FOR LOCAL MULTIPLAYER NAME -->
                     </li>
-                     <li class="nav-item myBlock__elm">
-                        <a class="nav-link myBlock__elm--mod" href="#">Online</a>   <!-- IF TIME IMPLEMENT MULTIPLE CLIENT SUPPORT -->
+                     <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">Online</a>   <!-- IF TIME IMPLEMENT MULTIPLE CLIENT SUPPORT -->
                     </li>
 
-                    <li class="nav-item myBlock__elm">
-                        <a class="nav-link myBlock__elm--mod" href="pages/locations.html">Rules</a> <!-- OPEN MODAL -->
+                    <li class="nav-item [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" id="rules" href="#">Rules</a> <!-- OPEN MODAL -->
                     </li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li><!-- OPEN MODAL -->
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li><!-- OPEN MODAL -->
+                <ul class="nav navbar-nav navbar-right [ myNav ]">
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li><!-- OPEN MODAL -->
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li><!-- OPEN MODAL -->
                 </ul>
             </div>
         </nav>
-        
-        <div class="text-center">
-            LOGO
-        </div>
     </header>
-    <div class="main">
+    
+    <div class="main index">
         <div class="container-fluid text-center">
-            <h1>Player One <br> Select your Character!</h1>
-            <div class="row">
-                <div id="namePlayer1" class=" col-md-3">
-                    <lable>Player One</lable><br>
-                    <input placeholder="PlayerName"><br>
-                    <button id="selectName1">SeletName</button>
-                </div>
-                 <div id="namePlayer2" class=" col-md-3 col-md-offset-6">
-                     <lable>Player Two</lable><br>
-                    <input disabled placeholder="PlayerName"><br>
-                     <button id="selectName2">SeletName</button>
-                </div>
-            </div>
+            <h1><span id="player">Player One</span><br> <span id="change">Select your Character!</span></h1>
         </div>
 
         <div class=" container text-center banner">
             <div class=" row ">
                 <div class=" banner__house banner__stark col-xs-4 col-sm-4 col-md-2 col-lg-2 col-lg-offset-1 col-md-offset-1 ">
-                    <img alt="StarkSigel" src="img/houses/wolf.png">
+                    <img class=" [ banner__house--img ] " alt="StarkSigel" src="img/houses/wolf.png">
                 </div>
 
                  <div class=" banner__house banner__tygarian col-xs-4 col-sm-4 col-md-2 col-lg-2 col-lg-offset-2 col-md-offset-2">
-                     <img alt="TygarianSigel" src="img/houses/dragon.png">
+                     <img class=" [ banner__house--img ] " alt="TygarianSigel" src="img/houses/dragon.png">
                 </div>
 
                 <div class=" banner__house banner__lannister col-xs-4 col-sm-4 col-md-2 col-lg-2 col-lg-offset-2 col-md-offset-2">
-                    <img alt="LannisterSigel" src="img/houses/lion.png">
+                    <img class=" [ banner__house--img ] " alt="LannisterSigel" src="img/houses/lion.png">
                 </div>
             </div>
         </div>
@@ -191,7 +86,7 @@
                     <!-- Card 1 Front -->
                     <div class="cardContainer__turn--front">
                       <div class="card-block">
-                          <p id="placeholder" class="text-center"><i class="ra ra-knight-helmet"></i></p>
+                          <img class="placeholder" src="img/Faces/placeholder.png" alt="character image">
                       </div>
                     </div>
                     <!-- End Card 1 Front -->
@@ -199,7 +94,7 @@
                     <!-- Card 1 Back -->
                     <div class="cardContainer__turn--back">
                       <div class="card-block">
-                          <h3 id="placeholderBack" class="text-center">Click on a house sigel</h3>
+                          <h3 class="placeholderBack" class="text-center">Click on a house sigel</h3>
                       </div>
                     </div>
                     <!-- End Card 1 Back -->
@@ -211,7 +106,7 @@
                     <!-- Card 2 Front -->
                     <div class="cardContainer__turn--front">
                       <div class="card-block">
-                          <p id="placeholder" class="text-center"><i class="ra ra-knight-helmet"></i></p>
+                          <img class="placeholder" src="img/Faces/placeholder.png" alt="character image">
                       </div>
                     </div>
                     <!-- End Card 2 Front -->
@@ -219,7 +114,7 @@
                     <!-- Card 2 Back -->
                     <div class="cardContainer__turn--back">
                       <div class="card-block">
-                          <h3 id="placeholderBack" class="text-center">Click on a house sigel</h3>
+                          <h3 class="placeholderBack" class="text-center">Click on a house sigel</h3>
                       </div>
                     </div>
                     <!-- End Card 2 Back -->
@@ -231,7 +126,7 @@
                     <!-- Card 3 Front -->
                     <div class="cardContainer__turn--front">
                       <div class="card-block">
-                          <p id="placeholder" class="text-center"><i class="ra ra-knight-helmet"></i></p>
+                          <img class="placeholder" src="img/Faces/placeholder.png" alt="character image">
                       </div>
                     </div>
                     <!-- End Card 3 Front -->
@@ -239,7 +134,7 @@
                     <!-- Card 2 Back -->
                     <div class="cardContainer__turn--back">
                       <div class="card-block">
-                          <h3 id="placeholderBack" class="text-center">Click on a house sigel</h3>
+                          <h3 class="placeholderBack" class="text-center">Click on a house sigel</h3>
                       </div>
                     </div>
                     <!-- End Card 3 Back -->
@@ -251,7 +146,7 @@
                     <!-- Card 4 Front -->
                     <div class="cardContainer__turn--front">
                       <div class="card-block">
-                          <p id="placeholder" class="text-center"><i class="ra ra-knight-helmet"></i></p>
+                          <img class="placeholder" src="img/Faces/placeholder.png" alt="character image">
                       </div>
                     </div>
                     <!-- End Card 4 Front -->
@@ -259,7 +154,7 @@
                     <!-- Card 4 Back -->
                     <div class="cardContainer__turn--back">
                       <div class="card-block">
-                          <h3 id="placeholderBack" class="text-center">Click on a house sigel</h3>
+                          <h3 class="placeholderBack" class="text-center">Click on a house sigel</h3>
                       </div>
                     </div>
                     <!-- End Card 4 Back -->
@@ -267,12 +162,77 @@
             </div><!-- End Card 4 -->
             
         </div>
+        <div class="container-fluid">
+            <div class="[ selected startBtn ] row">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <h3>Player One</h3>
+                    <p id="playerCharOne" class="playerChar">Select Character</p>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <h3 id="gameType"></h3>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <h3>Player Two</h3>
+                    <p id="playerCharTwo" class="playerChar">Select Character</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <a href="pages/game.html"><button id="startGame">| Start Game |</button></a></div>
+            </div>
+        </div>
         
     </div>
     
-    <footer>THIS IS THE FOOTER</footer>
+    <!-- The Modal -->
+    <div id="howTo" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal__content">
+            <span class="close">&times;</span>
+            <div class="container">
+                <div class="row">
+                    <div class=" text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <h1>How to play Traps'n'Thrones</h1>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-3">
+                        <h2>SinglePlayer</h2>
+                        <ol>
+                            <li>Click on a banner</li>
+                            <li>Select your character</li>
+                            <li>Click Start Game button</li>
+                        </ol>
+                        <h2>Multiplayer(local)</h2>
+                        <ol>
+                            <li>Click on a banner</li>
+                            <li>Select your character</li>
+                            <li>Click on a banner</li>
+                            <li>Select your second character</li>
+                            <li>Click Start Game button</li>
+                        </ol>
+                        </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <h2>Rules</h2>
+                        <p>The sules are simple.</p>
+                        <ol>
+                            <li>Roll the dice</li>
+                            <li>Wait for your token to move</li>
+                            <li>The first Player to reach the end of the board <b>WINS!</b></li>
+                        </ol>
+                        <p>But watch out for traps</p>
+
+                    </div>
+                    <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12"><button id="howToBtn">Close</button></div>
+                </div>
+            </div>
+
+        </div>
+    
+
+    </div>
+    
     <script src="script/apiOfFireAndIce.js"></script>
     <script src="script/charSelect.js"></script>
+    <script src="script/howTo.js"></script>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 </html>

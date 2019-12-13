@@ -5,14 +5,156 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title> Gameboard </title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" v="1.0" href="../styles.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<style>
-    canvas{
-        border: 1px solid black;
-    }
-</style>
+
 <body>
-    <canvas id="canvas" height="600" width="500"></canvas>
+    <header>
+                <nav class=" navbar navbar-default [ navigation ]">
+            <div class="navbar-header [ header ]">
+                <button class="navbar-toggle collapsed [ header__btn ]" type="button" data-toggle="collapse" data-target="#collapseMenu">
+                    <span class="glyphicon glyphicon-menu-hamburger [ header_btn--hamburger ]"></span>
+                </button>
+                <a class="navbar-brand hidden-lg hidden-md hidden-sm [ header__link ]" href="#"><img class="header__link--img" src="#"></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="collapseMenu">
+                <ul class="nav navbar-nav [ myNav ]">
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">SinglePlayer </a> <!-- STANDARD LAYOUT -->
+                    </li>
+                     <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">MultiPlayer </a> <!-- ADD TEXT FIEALD FOR LOCAL MULTIPLAYER NAME -->
+                    </li>
+                     <li class="nav-item disabled [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" href="#">Online</a>   <!-- IF TIME IMPLEMENT MULTIPLE CLIENT SUPPORT -->
+                    </li>
+
+                    <li class="nav-item [ myNav__elm ]">
+                        <a class="nav-link [ myNav__elm--mod ]" id="rules" href="#">Rules</a> <!-- OPEN MODAL -->
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right [ myNav ]">
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li><!-- OPEN MODAL -->
+                    <li class="nav-item disabled [ myNav__elm ]">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li><!-- OPEN MODAL -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="main board">
+        <!-- tile/MAP -->
+        <canvas id="canvas" height="600" width="500"></canvas>
+        <!-- board STYLE -->
+        <canvas id="graphics" height="600" width="500"></canvas>
+        <!-- TOKEN -->
+        <canvas id="token" height="600" width="500"></canvas>
+        
+        
+        <div class="container-fluid">
+            <div class="[ selected startBtn gameboard ] row">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <h3 class="players">Player One</h3>
+                    <p id="playerCharOne" class="playerChar">ROLL THE DICE!</p>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <img id="dice" src="../img/dice/diceOne.svg" alt="Roll the Dice">
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <h3 class="players">Player Two</h3>
+                    <p id="playerCharTwo" class="playerChar"> ROLL THE DICE!</p>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <button id="rollDice">| Roll Dice |</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- The Modal -->
+    <div id="onTrap" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal__content">
+            <span class="close">&times;</span>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <h1>DANG!</h1>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+                        <h2>Someone has betrayed you!</h2>
+                        <p> MOVE BACK 3 TILES</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><button id="closeTrap">Continue</button></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+       <div id="howTo" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal__content">
+            <span class="close">&times;</span>
+            <div class="container">
+                <div class="row">
+                    <div class=" text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                      <h1>How to play Traps'n'Thrones</h1>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-3">
+                        <h2>SinglePlayer</h2>
+                        <ol>
+                            <li>Click on a banner</li>
+                            <li>Select your character</li>
+                            <li>Click Start Game button</li>
+                        </ol>
+                        <h2>Multiplayer(local)</h2>
+                        <ol>
+                            <li>Click on a banner</li>
+                            <li>Select your character</li>
+                            <li>Click on a banner</li>
+                            <li>Select your second character</li>
+                            <li>Click Start Game button</li>
+                        </ol>
+                        </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <h2>Rules</h2>
+                        <p>The sules are simple.</p>
+                        <ol>
+                            <li>Roll the dice</li>
+                            <li>Wait for your token to move</li>
+                            <li>The first Player to reach the end of the board <b>WINS!</b></li>
+                        </ol>
+                        <p>But watch out for traps</p>
+
+                    </div>
+                    <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12"><button id="howToBtn">Close</button></div>
+                </div>
+            </div>
+
+        </div>
+    
+
+    </div>
+    <!-- JS -->
+    <script src="../script/pages.js"></script>
     <script src="../script/board.js"></script>
+    <script src="../script/player.js"></script>
+     <script src="../script/dice.js"></script>
+    <script src="../script/rules.js"></script>
+    <script src="../script/graphics.js"></script>
+    <script src="../script/howTo.js"></script>
+   
 </body>
 </html>

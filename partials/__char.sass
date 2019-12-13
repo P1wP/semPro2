@@ -1,0 +1,65 @@
+.banner
+    height: 450px
+    margin-bottom: 0
+    &__house
+        margin-top: 5px
+        height: 350px
+        filter: grayscale(100%)
+        cursor: pointer
+        &--img
+            margin-top: 60px
+            width: 100%
+            height: auto
+    &__stark
+        background-image: url(img/houses/stark.png)
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+        
+    &__tygarian
+        background-image: url(img/houses/tygerian.png)
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+    &__lannister
+        background-image: url(img/houses/lannister.png)
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+    
+   
+// CHAR CARDS    
+.cardContainer 
+    display: grid
+    perspective: 1000px
+    &__turn 
+        display: grid
+        grid-template-areas: "frontAndBack"
+        transform-style: preserve-3d
+        transition: all 2.0s ease
+        margin: 10px
+        &--front 
+            backface-visibility: hidden
+            transform-style: preserve-3d
+            grid-area: frontAndBack
+            background: gray
+            border: 2px solid black
+            height: 200px
+        &--front img
+            width: 100%
+            height: auto
+            max-width: 200px
+        &--back 
+            grid-area: frontAndBack
+            transform: rotateY(-180deg)
+            background: blue
+            height: 200px
+
+    &:hover .cardContainer__turn 
+        transform: rotateY(180deg)
+
+//char IMAGE
+.placeholder
+    max-height: 200px
+    display: block
+    margin: 0 auto
